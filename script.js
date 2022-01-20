@@ -28,9 +28,12 @@ document.querySelector(".check").addEventListener("click", function (event) {
     // When player wins
   } else if (guess === secretNumber) {
     displayMessage("🎉 Correct Number!");
+    let audio = new Audio("mixkit-arcade-score-interface-217.wav");
+    audio.play();
     document.querySelector(".number").textContent = secretNumber;
 
     document.querySelector("body").style.backgroundColor = "#60b347";
+
     document.querySelector(".number").style.width = "30rem";
 
     if (score > highscore) {
