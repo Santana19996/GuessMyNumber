@@ -16,7 +16,7 @@ const displayMessage = function (message) {
 };
 let score = 20;
 let highscore = 0;
-document.querySelector(".number").textContent = secretNumber;
+document.querySelector(".number").textContent = "?";
 
 document.querySelector(".check").addEventListener("click", function (event) {
   const guess = Number(document.querySelector(".guess").value);
@@ -47,7 +47,10 @@ document.querySelector(".check").addEventListener("click", function (event) {
       document.querySelector(".score").textContent = score;
     } else {
       displayMessage("💥 You lost the game!");
+      document.querySelector("body").style.backgroundColor = "#DC143C";
       document.querySelector(".score").textContent = 0;
+      let loserAudio = new Audio("mixkit-negative-answer-lose-2032.wav");
+      loserAudio.play();
     }
   }
 });
@@ -56,7 +59,6 @@ document.querySelector(".again").addEventListener("click", function () {
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
 
-  // document.querySelector('.message').textContent = 'Start guessing...';
   displayMessage("Start guessing...");
   document.querySelector(".score").textContent = score;
   document.querySelector(".number").textContent = "?";
